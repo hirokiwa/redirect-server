@@ -1,8 +1,16 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => res.type('html').send(html));
+const REDIRECT_URL = process.env.REDIRECT_URL || 'https://example.com';
+
+app.get('/', (_, res) => {
+  res.redirect(301, '/1');
+});
+
+app.get('/1', (_, res) => {
+  res.redirect(301, REDIRECT_URL);
+});
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
