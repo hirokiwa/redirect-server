@@ -27,6 +27,8 @@ app.get('/3', (_, res) => {
   res.redirect(301, REDIRECT_URL_3);
 });
 
+app.get("/wake", (_, res) => res.send("Server is waked!!"));
+
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 server.keepAliveTimeout = 120 * 1000;
